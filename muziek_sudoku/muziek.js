@@ -14,7 +14,7 @@ function startMusic(target) {
         playing_music.pause();
     }
 
-    playing_music.src = "assets/audio/t" + target.id[0] + "/" + target.id[1] + ".mp3";
+    playing_music.src = "audio/t" + target.id[0] + "/" + target.id[1] + ".mp3";
     playing_music.play();
 }
 
