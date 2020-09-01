@@ -1,6 +1,6 @@
 @font-face {
     font-family: molFont;
-    src: url(font/molFont.otf);
+    src: url(./assets/font/molFont.otf);
 }
 
 body {
@@ -22,6 +22,12 @@ body {
     top: 50px;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+
+
 p {
     position: absolute;
     top: 5px;
@@ -35,6 +41,10 @@ td {
     border-width: 10px;
     border-color: #46aebc;
     border-style: solid;
-    padding: 0px;
-    
+}
+
+audio {
+    position: absolute;
+    top: 520px;
+    left: 50px;
 }
