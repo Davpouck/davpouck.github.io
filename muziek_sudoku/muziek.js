@@ -21,7 +21,7 @@ function startMusic(target) {
     }
 
     playing_target = target;
-    playing_music.src = "assets/audio/t" + target.id[0] + "/" + target.id[1] + ".mp3";
+    playing_music.src = "audio/t" + target.id[0] + "/" + target.id[1] + ".mp3";
     target.style.color = "#46aebc";
     playing_music.play();
 }
