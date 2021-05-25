@@ -5,6 +5,13 @@
 
 </head>
 <body>
+  <script>
+    function getData(fileName) {
+      fetch("https://davpouck.github.io/data/" + fileName)
+      .then(response => response.json())
+      .then(json => console.log(json));
+    }
+  </script>
   <div id="header">
     <img id="logo" src="https://i.imgur.com/CnlHlXZ.jpg?2" title="source: imgur.com" />
     <span class="headerOption"><a href="./eliminatie.html">eliminatie</a></span>
@@ -13,5 +20,7 @@
   <div>
     <p class="info">De mol burgie heet u welkom. !!!2 de</p>
     test
+    <button onclick="getData('test.json')">fetch</button>
   </div>
+  
 </body>
