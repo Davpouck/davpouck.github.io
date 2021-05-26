@@ -1,7 +1,0 @@
-{"access_token": "m-f1pzGYAeMAAAAAAAAAAUV_YEOYCXku1ItfpSoFTM7PKB1OuHv8jNDmCqpAlfF_",
-"token_type": "bearer",
-"uid": "173435552",
-"account_id": "dbid:AACPzqkXfqVPu30oxxD1TGfAMKlB-mi3So4",
-"scope": "account_info.read files.content.read files.metadata.read"}
-
-f8KRMO6zti4AAAAAAAAAAatgh2WcBTD9zOws9cgKyWINOFednwVOWHTvv-HvMedF
