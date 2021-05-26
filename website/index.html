@@ -7,10 +7,21 @@
 <body>
   <script>
     function getData(fileName) {
-      fetch("https://davpouck.github.io/data/" + fileName, {
+      // fetch("https://davpouck.github.io/data/" + fileName, {
+      //   headers: {
+      //     "Cache-Control": "no-store"
+      //   }
+      // })
+      // .then(response => response.json())
+      // .then(json => console.log(json));
+      fetch('https://content.dropboxapi.com/2/files/download', {
+        method: 'POST',
         headers: {
-          "Cache-Control": "no-store"
-        }
+          Host: "https://content.dropboxapi.com",
+          "User-Agent": "api-explorer-client",
+          Authorization: "Bearer m-f1pzGYAeMAAAAAAAAAAUV_YEOYCXku1ItfpSoFTM7PKB1OuHv8jNDmCqpAlfF_",
+          "Dropbox-API-Arg": '{"path":"/'+fileName+'"}'
+        },
       })
       .then(response => response.json())
       .then(json => console.log(json));
@@ -28,3 +39,5 @@
   </div>
   
 </body>
+
+
