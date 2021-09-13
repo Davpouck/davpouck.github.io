@@ -2,41 +2,17 @@
 <head>
   <title>De Mol Burgie</title>
   <link rel="stylesheet" href=index.css>
-
+  <script src="dropbox_api.js"></script>
 </head>
 <body>
+  <button onclick="dropbox_reader.getFile('test.json')">get</button>
+  <button onclick='dropbox_writer.putFile("test.json", `{"time": "${Date()}"}`)'>put</button>
+  <iframe id="frame" srcdoc=""></iframe>
   <script>
-    function getData(fileName) {
-      // fetch("https://davpouck.github.io/data/" + fileName, {
-      //   headers: {
-      //     "Cache-Control": "no-store"
-      //   }
-      // })
-      // .then(response => response.json())
-      // .then(json => console.log(json));
-      fetch('https://content.dropboxapi.com/2/files/download', {
-        method: 'POST',
-        headers: {
-          Host: "https://content.dropboxapi.com",
-          "User-Agent": "api-explorer-client",
-          Authorization: "Bearer m-f1pzGYAeMAAAAAAAAAAUV_YEOYCXku1ItfpSoFTM7PKB1OuHv8jNDmCqpAlfF_",
-          "Dropbox-API-Arg": '{"path":"/'+fileName+'"}'
-        },
-      })
-      .then(response => response.json())
-      .then(json => console.log(json));
-    }
+    let dropbox_writer = DropboxAPI("f8KRMO6zti4AAAAAAAAAAatgh2WcBTD9zOws9cgKyWINOFednwVOWHTvv-HvMedF")
+    let dropbox_reader = DropboxAPI("m-f1pzGYAeMAAAAAAAAAAUV_YEOYCXku1ItfpSoFTM7PKB1OuHv8jNDmCqpAlfF_")
+    // setInterval(() => dropbox_reader.getFile("test.json"), 10000)
   </script>
-  <div id="header">
-    <img id="logo" src="https://i.imgur.com/CnlHlXZ.jpg?2" title="source: imgur.com" />
-    <span class="headerOption"><a href="./eliminatie.html">eliminatie</a></span>
-  </div>
-
-  <div>
-    <p class="info">De mol burgie heet u welkom. !!!2 de</p>
-    test
-    <button onclick="getData('test.json')">fetch</button>
-  </div>
   
 </body>
 
