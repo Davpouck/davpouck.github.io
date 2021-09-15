@@ -1,3 +1,90 @@
 body {
-    background-color: slategray;
+    position: relative;
+    background-color: #dfdfdf;
+    font: 500 100%/1.25 "MuseoSans", sans-serif;
+    color: #dac65a;
+    width: 30%;
+    left: 35%;
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 300px) {
+    body {
+      width: 90%; /* The width is 100%, when the viewport is 800px or smaller */
+      left: 0%;
+    }
+  }
+
+button {
+    margin-top: 3px;
+    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    border: solid 0px #dac65a;
+    border-radius: 5rem;
+    background-color: #dac65a;
+    color: white;
+    min-width: 5rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input {
+    margin-top: 3px;
+    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    border: solid 0px #dac65a;
+    border-bottom: solid 2px #dac65a;
+    background-color: #dfdfdf;
+}
+
+label {
+    font-size: xx-small;
+    color:gray;
+}
+
+.vbox-center {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vbox-stretch {
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.toggle-button-right {
+    width: 3rem;
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    border: solid 2px #dac65a;
+    background-color: #dfdfdf;
+    color: #404040;
+}
+
+.toggle-button-left {
+    width: 3rem;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+    border: solid 2px #dac65a;
+    background-color: #dfdfdf;
+    color: #404040;
+}
+
+.toggle-button-selected {
+    font-weight: bold;
+    color: white;
+    background-color: #dac65a;
 }

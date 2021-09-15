@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=index.css>
+    <title>test</title>
+    <script src="dropbox_api.js"></script>
+    <script src="nieuwe_betaling.js"></script>
+  </head>
+  <body class="vbox-stretch">
+    <div class="hbox">
+        <div>
+            <label for="payer">betaald door:</label><br>
+            <div style="white-space: nowrap;">
+              <button onclick="betaaldDoorFien()" id="betaald-fien" class="toggle-button-left toggle-button-selected" disabled>Fien</button><button onclick="betaaldDoorDante()" id="betaald-dante" class="toggle-button-right">Dante</button>
+              <script>
+                let betaald_door = "Fien"
+                function betaaldDoorFien() {
+                  document.getElementById("betaald-dante").classList.toggle('toggle-button-selected');
+                  document.getElementById("betaald-fien").classList.toggle('toggle-button-selected');
+                  document.getElementById("betaald-fien").disabled = true;
+                  document.getElementById("betaald-dante").disabled = false;
+                  betaald_door = "Fien"
+                }
+                function betaaldDoorDante() {
+                  document.getElementById("betaald-dante").classList.toggle('toggle-button-selected');
+                  document.getElementById("betaald-fien").classList.toggle('toggle-button-selected');
+                  document.getElementById("betaald-fien").disabled = false;
+                  document.getElementById("betaald-dante").disabled = true;
+                  betaald_door = "Dante"
+                }
+              </script>
+            </div>
+        </div>
+        <div>
+            <label for="amount">Bedrag:</label><br>
+            <input id="amount" style="width: 3rem;" value="3.52">
+        </div>
+    </div>
+        <label for="description">omschrijving:</label><br>
+        <input id="description">
+    <div>
+    </div>
+    <div>
+        <label for="pay-time">Datum:</label><br>
+        <input type="datetime-local" id="pay-time" name="pay-time" value="" format="DD/MM/YYYY hh:mm">
+    </div>
+    <div>
+        <label for="category">Categorie:</label><br>
+        <input id="category">
+    </div>
+    <div>
+        <label for="comment">Opmerkingen:</label><br>
+        <input id="comment">
+    </div>
+    <div class="hbox">
+      <button onclick="addPayment()">Oké</button>
+      <button>Annuleer</button>
+    </div>
+  <script>
+    function dateToString(date) {
+      let y = date.getFullYear()
+      let m = date.getMonth()+1
+      if (m < 10) m = "0"+m
+      let d = date.getDate()
+      if (d < 10) d = "0"+d
+      let t = date.toTimeString().slice(0,5)
+      return y+"-"+m+"-"+d+"T"+t
+    }
+
+    let now = new Date()
+    let now_str = dateToString(now)
+    document.getElementById("pay-time").value = now_str
+  </script>
+  </body>
+
+</html>

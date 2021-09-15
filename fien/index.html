@@ -2,12 +2,42 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href=achtervolging.css>
-    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=index.css>
+    <script src="dropbox_api.js"></script>
+    <title>Betalingen</title>
   </head>
-  <body>
+  <body class="vbox-center">
     <div id="balance">
-      
+      <div>
+        Fien +
+      </div>
+      <div id="balance-arrow">
+         €13,42
+      </div>
+      <div>
+        Dante -
+      </div>
     </div>
+    <div class="vbox-stretch">
+      <button class="hors-button">
+        Overzicht
+      </button>
+      <button class="hors-button" onclick="location.href='nieuwe_betaling.html'">
+        Nieuwe betaling
+      </button>
+    </div>
+    <script>
+      let writer = DropboxAPI("f8KRMO6zti4AAAAAAAAAAatgh2WcBTD9zOws9cgKyWINOFednwVOWHTvv-HvMedF")
+      writer.getFile("betalingen.txt", (file) => {
+        let som = 0
+        console.log(file)
+        file.split("\n").slice(0,-1).forEach(e => {
+          let betaling = e.split(";")
+          som += parseFloat(betaling[3]) * (betaling[2] == "Fien" ? 1: -1)
+        });
+        document.getElementById("balance-arrow").innerHTML = ""+som
+      })
+    </script>
   </body>
 </html>
