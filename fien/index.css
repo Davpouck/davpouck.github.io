@@ -1,19 +1,27 @@
 body {
     position: relative;
     background-color: #dfdfdf;
-    font: 500 100%/1.25 "MuseoSans", sans-serif;
+    font-family: "MuseoSans", sans-serif;
     color: #dac65a;
     width: 30%;
     left: 35%;
 }
 
 /* Use a media query to add a breakpoint at 800px: */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 900px) {
+    body {
+      width: 60%; /* The width is 100%, when the viewport is 800px or smaller */
+      left: 20%;
+    }
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 450px) {
     body {
       width: 90%; /* The width is 100%, when the viewport is 800px or smaller */
-      left: 0%;
+      left: 5%;
     }
-  }
+}
 
 button {
     margin-top: 3px;
@@ -29,7 +37,7 @@ button:hover {
     cursor: pointer;
 }
 
-input {
+input, select {
     margin-top: 3px;
     padding: 0.5rem 0.25rem 0.5rem 0.25rem;
     border: solid 0px #dac65a;
@@ -38,6 +46,7 @@ input {
 }
 
 label {
+    height: min-content;
     font-size: xx-small;
     color:gray;
 }
@@ -46,6 +55,7 @@ label {
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: stretch;
 }
 
 .vbox-stretch {
@@ -54,11 +64,17 @@ label {
     align-items: stretch;
 }
 
+.vbox-stretch * {
+    margin-bottom: 5px;
+}
+
 .hbox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    /* line-height: 1.5rem;
+    height: 1.5rem; */
 }
 
 .toggle-button-right {
@@ -87,4 +103,22 @@ label {
     font-weight: bold;
     color: white;
     background-color: #dac65a;
+}
+
+.loader {
+    border: 0.2rem solid #f3f3f3; /* Light grey */
+    border-top: 0.2rem solid #dac65a;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.payment {
+    border: solid 2px black;
 }

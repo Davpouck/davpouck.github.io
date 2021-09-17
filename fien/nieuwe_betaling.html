@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=index.css>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>test</title>
     <script src="dropbox_api.js"></script>
     <script src="nieuwe_betaling.js"></script>
@@ -34,29 +35,30 @@
             </div>
         </div>
         <div>
-            <label for="amount">Bedrag:</label><br>
-            <input id="amount" style="width: 3rem;" value="3.52">
+            <label for="amount">Bedrag:</label>
+            <div class="hbox">
+              <input style="width: 1rem;" id="amount-euro" value="€" disabled>
+              <input id="amount" style="width: 4rem;">
+            </div>
         </div>
     </div>
-        <label for="description">omschrijving:</label><br>
-        <input id="description">
-    <div>
-    </div>
-    <div>
-        <label for="pay-time">Datum:</label><br>
-        <input type="datetime-local" id="pay-time" name="pay-time" value="" format="DD/MM/YYYY hh:mm">
-    </div>
-    <div>
-        <label for="category">Categorie:</label><br>
-        <input id="category">
-    </div>
-    <div>
-        <label for="comment">Opmerkingen:</label><br>
-        <input id="comment">
-    </div>
+      <label for="description">omschrijving:</label>
+      <input id="description" value="">
+      <label for="pay-time">Datum:</label>
+      <input type="datetime-local" id="pay-time" name="pay-time" value="" format="DD/MM/YYYY hh:mm">
+      <label for="category">Categorie:</label>
+      <select name="category" id="category">
+        <option value="geen-categorie">Geen categorie</option>
+        <option value="boodschappen">Boodschappen</option>
+        <option value="maaltijd">Maaltijd</option>
+        <option value="ontspanning">Ontspanning</option>
+        <option value="overige">Overige</option>
+      </select>
+      <label for="comment">Opmerkingen:</label>
+      <input id="comment" value="">
     <div class="hbox">
-      <button onclick="addPayment()">Oké</button>
-      <button>Annuleer</button>
+      <button id="oke-button" onclick="addPayment()">Oké</button>
+      <button onclick="location.href='index.html'">Annuleer</button>
     </div>
   <script>
     function dateToString(date) {

@@ -24,8 +24,10 @@ let DropboxAPI = function (access_token) {
             .then(response => {                
                 return response.text()
             }).then(text => callback(text))
-            .catch(() => {
+            .catch((err) => {
+                console.log(err)
                 alert("probeer opnieuw")
+                throw err
             })
         },
 
@@ -45,8 +47,10 @@ let DropboxAPI = function (access_token) {
             .then(response => {
               return response.json()
             }).then(json => callback(json))
-            .catch(() => {
+            .catch((err) => {
+                console.log(err)
                 alert("probeer opnieuw")
+                throw err
             })
           }
     }

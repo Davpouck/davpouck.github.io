@@ -9,18 +9,17 @@
   </head>
   <body class="vbox-center">
     <div id="balance">
-      <div>
-        Fien +
+      <div id="balance-fien">
+        Fien
       </div>
       <div id="balance-arrow">
-         €13,42
       </div>
-      <div>
-        Dante -
+      <div id="balance-dante">
+        Dante
       </div>
     </div>
     <div class="vbox-stretch">
-      <button class="hors-button">
+      <button class="hors-button" onclick="location.href='overzicht.html'">
         Overzicht
       </button>
       <button class="hors-button" onclick="location.href='nieuwe_betaling.html'">
@@ -28,6 +27,33 @@
       </button>
     </div>
     <script>
+      function setBalance(x) {
+        if (x > 0) {
+          document.getElementById("balance-fien").innerHTML = "Fien +"
+          document.getElementById("balance-fien").style.color = "#00ff00"
+          document.getElementById("balance-dante").innerHTML = "Dante -"
+          document.getElementById("balance-dante").style.color = "#ff0000"
+        } else if (x == 0) {
+          document.getElementById("balance-fien").innerHTML = "Fien"
+          document.getElementById("balance-fien").style.color = ""
+          document.getElementById("balance-dante").innerHTML = "Dante"
+          document.getElementById("balance-dante").style.color = ""
+        } else {
+          document.getElementById("balance-fien").innerHTML = "Fien -"
+          document.getElementById("balance-fien").style.color = "#ff0000"
+          document.getElementById("balance-dante").innerHTML = "Dante +"
+          document.getElementById("balance-dante").style.color = "#00ff00"
+        }
+        let som_str = ""+Math.trunc(Math.abs(x)/2)
+        if (som_str.length == 1) {
+          som_str = "00" + som_str
+        }
+        if (som_str.length == 2) {
+          som_str = "0" + som_str
+        }
+        som_str = "€" + som_str
+        document.getElementById("balance-arrow").innerHTML = som_str.slice(0,-2) + "." + som_str.slice(-2)
+      }
       let writer = DropboxAPI("f8KRMO6zti4AAAAAAAAAAatgh2WcBTD9zOws9cgKyWINOFednwVOWHTvv-HvMedF")
       writer.getFile("betalingen.txt", (file) => {
         let som = 0
@@ -36,7 +62,7 @@
           let betaling = e.split(";")
           som += parseFloat(betaling[3]) * (betaling[2] == "Fien" ? 1: -1)
         });
-        document.getElementById("balance-arrow").innerHTML = ""+som
+        setBalance(som)
       })
     </script>
   </body>
