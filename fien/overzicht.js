@@ -15,7 +15,8 @@ function PaymentDivHTML(payment) {
         "boodschappen": '<i class="fas fa-shopping-basket"></i>',
         "maaltijd": '<i class="fas fa-utensils"></i>',
         "ontspanning": '<i class="fas fa-umbrella-beach"></i>',
-        "overige": '',
+        "huur": '<i class="fas fa-bed"></i>',
+        "overige": '<i class="fas fa-ellipsis-h"></i>',
     }
     payment = payment.split(";")
     let som_str = payment[3]
