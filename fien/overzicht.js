@@ -12,8 +12,8 @@ function PaymentDivHTML(payment) {
     }
     let icon = {
         "geen-categorie": '<i class="fas fa-question"></i>',
-        "boodschappen": '<i class="fas fa-shopping-basket"></i>',
-        "maaltijd": '<i class="fas fa-utensils"></i>',
+        "winkel": '<i class="fas fa-shopping-basket"></i>',
+        "eten": '<i class="fas fa-utensils"></i>',
         "ontspanning": '<i class="fas fa-umbrella-beach"></i>',
         "huur": '<i class="fas fa-bed"></i>',
         "overige": '<i class="fas fa-ellipsis-h"></i>',
@@ -30,8 +30,8 @@ function PaymentDivHTML(payment) {
     console.log(payment)
     let html = "<div id=pay-"+ payment[0] +" class='hbox payment'>"
     html += "<div>"+icon[payment[5]]+"</div>"
-    html += "<div class='vbox-stretch' style='margin:0'><b style='margin:0'>"+payment[1]+"</b><label style='margin:0'>kkk</label></div>"
-    html += "<div>"+ISOToString(payment[4])+"</div>"
+    html += "<div class='vbox-stretch' style='margin:0'><b style='margin:0'>"+payment[1]+"</b><label style='margin:0'>"+ISOToString(payment[4])+"</label></div>"
+    // html += "<div>"+ISOToString(payment[4])+"</div>"
     html += "<div>"+payment[2]+": "+som_str+"</div>"
     html += "</div>"
     return html
