@@ -28,11 +28,12 @@ function PaymentDivHTML(payment) {
         }
     som_str = "€" + som_str.slice(0,-2) + "." + som_str.slice(-2)
     console.log(payment)
-    let html = "<div id=pay-"+ payment[0] +" class='hbox payment'>"
+    let kleur = payment[2]=="Fien" ? "#C8A2C8" : "#AAF0D1"
+    let html = "<div id=pay-"+ payment[0] +" class='hbox payment' style='border-color:"+kleur+"'>"
     html += "<div>"+icon[payment[5]]+"</div>"
     html += "<div class='vbox-stretch' style='margin:0'><b style='margin:0'>"+payment[1]+"</b><label style='margin:0'>"+ISOToString(payment[4])+"</label></div>"
     // html += "<div>"+ISOToString(payment[4])+"</div>"
-    html += "<div>"+payment[2]+": "+som_str+"</div>"
+    html += "<div>"+payment[2][0]+": "+som_str+"</div>"
     html += "</div>"
     return html
 }

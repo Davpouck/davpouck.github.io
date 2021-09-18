@@ -120,5 +120,6 @@ label {
 }
 
 .payment {
-    border: solid 2px black;
+    border: solid 3px black;
+    border-radius: 0.2rem;
 }
