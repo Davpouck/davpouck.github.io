@@ -15,7 +15,7 @@ let DropboxAPI = function (access_token) {
 
     return {
 
-        getFile : function getData(fileName, callback) {
+        getFile : async function(fileName, callback, fin) {
             let re
             fetch('https://content.dropboxapi.com/2/files/download', {
                 method: 'POST',
@@ -23,15 +23,22 @@ let DropboxAPI = function (access_token) {
             })
             .then(response => {                
                 return response.text()
-            }).then(text => callback(text))
+            }).then(text => {
+                callback(text)
+                if (fin) {
+                    fin()
+                }
+            })
             .catch((err) => {
                 console.log(err)
                 alert("probeer opnieuw")
-                throw err
+                if (fin) {
+                    fin()
+                }
             })
         },
 
-        putFile : async function(fileName, content, callback) {
+        putFile : async function(fileName, content, callback, fin) {
             const dropbox_api_UPDATE_args = {
                 path: "/"+fileName,
                 mode: {".tag":"overwrite"},
@@ -46,11 +53,18 @@ let DropboxAPI = function (access_token) {
             })
             .then(response => {
               return response.json()
-            }).then(json => callback(json))
+            }).then(json => {
+                callback(json)
+                if (fin) {
+                    fin()
+                }
+            })
             .catch((err) => {
                 console.log(err)
                 alert("probeer opnieuw")
-                throw err
+                if (fin) {
+                    fin()
+                }
             })
           }
     }

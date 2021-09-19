@@ -5,6 +5,7 @@ body {
     color: #dac65a;
     width: 30%;
     left: 35%;
+    margin: 0;
 }
 
 /* Use a media query to add a breakpoint at 800px: */
@@ -64,8 +65,12 @@ label {
     align-items: stretch;
 }
 
-.vbox-stretch * {
+.vbox-stretch > * {
     margin-bottom: 5px;
+}
+
+.vstretch {
+    width: 100%;
 }
 
 .hbox {
@@ -123,3 +128,9 @@ label {
     border: solid 3px black;
     border-radius: 0.2rem;
 }
+
+.center-text {
+    display: flex;
+    align-items:center;
+    justify-content:center;
+  }

@@ -30,9 +30,9 @@
       function setBalance(x) {
         if (x > 0) {
           document.getElementById("balance-fien").innerHTML = "Fien +"
-          document.getElementById("balance-fien").style.color = "#00ff00"
+          document.getElementById("balance-fien").style.color = "#40e040"
           document.getElementById("balance-dante").innerHTML = "Dante -"
-          document.getElementById("balance-dante").style.color = "#ff0000"
+          document.getElementById("balance-dante").style.color = "#e04040"
         } else if (x == 0) {
           document.getElementById("balance-fien").innerHTML = "Fien"
           document.getElementById("balance-fien").style.color = ""
@@ -40,9 +40,9 @@
           document.getElementById("balance-dante").style.color = ""
         } else {
           document.getElementById("balance-fien").innerHTML = "Fien -"
-          document.getElementById("balance-fien").style.color = "#ff0000"
+          document.getElementById("balance-fien").style.color = "#e04040"
           document.getElementById("balance-dante").innerHTML = "Dante +"
-          document.getElementById("balance-dante").style.color = "#00ff00"
+          document.getElementById("balance-dante").style.color = "#40e040"
         }
         let som_str = ""+Math.trunc(Math.abs(x)/2)
         if (som_str.length == 1) {
@@ -60,7 +60,13 @@
         console.log(file)
         file.split("\n").slice(0,-1).forEach(e => {
           let betaling = e.split(";")
-          som += parseFloat(betaling[3]) * (betaling[2] == "Fien" ? 1: -1)
+          if (betaling[0][0] != '-') {
+            let bedrag = betaling[3]
+            if (betaling[5] == "terugbetaling") {
+              bedrag *= 2
+            }
+            som += parseInt(bedrag) * (betaling[2] == "Fien" ? 1: -1)
+          }
         });
         setBalance(som)
       })
