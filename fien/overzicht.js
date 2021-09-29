@@ -50,10 +50,16 @@ function PaymentDivHTML(payment, index) {
 let writer = DropboxAPI("f8KRMO6zti4AAAAAAAAAAatgh2WcBTD9zOws9cgKyWINOFednwVOWHTvv-HvMedF")
 
 writer.getFile("betalingen.txt", (file) => {
-    payments = file.split("\n").reverse().slice(1)
+    payments = file.split("\n").reverse().slice(1).sort((a, b) => {
+        let date_a = a.split(";")[4]
+        let date_b = b.split(";")[4]
+        if (date_a > date_b) return -1
+        else if (date_a == date_b) return 0
+        return 1
+    })
     payments.forEach((element, index, arr) => {
         if (element[0] != "-") {
-            document.body.innerHTML += PaymentDivHTML(element, index)
+            document.body.innerHTML += PaymentDivHTML(element, parseInt(element.split(";")[0]))
         }
     });
 })
