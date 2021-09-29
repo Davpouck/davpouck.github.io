@@ -8,9 +8,13 @@ let payments
 
 function PaymentDivHTML(payment, index) {
     function ISOToString(time) {
+        let days = ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]
         time = time.split("T")
         let date = time[0].split("-")
-        return time[1]+" "+date[2]+"/"+date[1]+"/"+date[0].slice(2)
+        let date_obj = new Date(date)
+        
+        // return time[1]+" "+date[2]+"/"+date[1]+"/"+date[0].slice(2)
+        return ""+days[date_obj.getDay()]+" "+date[2]+"/"+date[1]+"/"+date[0].slice(2) + " " + time[1]
     }
     let icon = {
         "geen-categorie": '<i class="fas fa-question"></i>',
