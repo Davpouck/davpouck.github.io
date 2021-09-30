@@ -49,7 +49,7 @@ function savePayment() {
             if (x.length == undefined) {
                 x[1] = "0"
             }
-            if (parseInt(x[0]) > 0 && x[1].length <= 2) {
+            if (parseInt(x[0]) >= 0 && x[1].length <= 2) {
                 payment.bedrag = parseInt(x[0])*100 + parseInt(x[1])
                 document.getElementById("amount-euro").style.borderColor = "#dac65a"
                 document.getElementById("amount").style.borderColor = "#dac65a"
